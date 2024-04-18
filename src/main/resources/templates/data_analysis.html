@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Analysis</title>
+</head>
+<body>
+<h2>Data Analysis</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Buying Question</th>
+        <th>Selling Question</th>
+        <th>Win Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="analysis : ${dataAnalysisList}">
+        <td th:text="${analysis.buyingQuestion.nowPrice}"></td>
+        <td th:text="${analysis.sellingQuestion.nowPrice}"></td>
+        <td th:text="${analysis.winStatus}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

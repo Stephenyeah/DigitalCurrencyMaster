@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Selling Questions</title>
+</head>
+<body>
+<h2>Selling Questions</h2>
+<table>
+  <thead>
+  <tr>
+    <th>Now Price</th>
+    <th>News Status</th>
+    <th>Resistance Price</th>
+    <th>Bollinger Bands Position</th>
+    <th>Result</th>
+    <th>Your Answer</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="question : ${sellingQuestions}">
+    <td th:text="${question.nowPrice}"></td>
+    <td th:text="${question.newsStatus}"></td>
+    <td th:text="${question.resistancePrice}"></td>
+    <td th:text="${question.bollingerBandsPosition}"></td>
+    <td th:text="${question.result}"></td>
+    <td><input type="text" th:name="'answer_'+${question.sellId}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
