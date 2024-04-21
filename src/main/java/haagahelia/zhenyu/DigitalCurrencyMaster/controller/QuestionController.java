@@ -23,11 +23,11 @@ public class QuestionController {
         return "login";
     }
 
-//    @RequestMapping(value = { "/", "/DataAnalysis" })
-//    public String dataAnalysis(Model model) {
-//        model.addAttribute("buyingQuestion", dataAnalysisRepository.findAll());
-//        return "dataAnalysis";
-//    }
+    @RequestMapping(value = { "/", "/DataAnalysis" })
+    public String dataAnalysis(Model model) {
+        model.addAttribute("buyingQuestion", dataAnalysisRepository.findAll());
+        return "dataAnalysis";
+    }
 
 
 

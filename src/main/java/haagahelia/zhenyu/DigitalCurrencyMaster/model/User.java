@@ -35,6 +35,7 @@ public class User {
         this.username = username;
         this.passwordHash = passwordHash;
         this.email = email;
+        this.role = role;
     }
 
     public Long getId() {
