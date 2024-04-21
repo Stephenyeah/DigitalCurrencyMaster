@@ -1,11 +1,15 @@
 ﻿-- Table for buying questions
+
+SHOW TABLES;
+SELECT * FROM data_analysis;
 CREATE TABLE buying_questions (
     buy_id INT AUTO_INCREMENT PRIMARY KEY,
     now_price FLOAT,
     news_status VARCHAR(255),
     support_price FLOAT,
     rsi_data INT,
-    bollinger_bands_position VARCHAR(255)
+    bollinger_bands_position VARCHAR(255),
+    dataTime VARCHAR(255)
 );
 
 -- Table for selling questions
@@ -15,7 +19,8 @@ CREATE TABLE selling_questions (
     news_status VARCHAR(255),
     resistance_price FLOAT,
     bollinger_bands_position VARCHAR(255),
-    result VARCHAR(255)
+    result VARCHAR(255),
+    dataTime VARCHAR(255)
 );
 
 -- Table for data analysis

@@ -3,30 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <title>Selling Questions</title>
+  <link rel="stylesheet" type="text/css" href="../static/css/questionlist.css">
 </head>
 <body>
 <h2>Selling Questions</h2>
-<table>
-  <thead>
-  <tr>
-    <th>Now Price</th>
-    <th>News Status</th>
-    <th>Resistance Price</th>
-    <th>Bollinger Bands Position</th>
-    <th>Result</th>
-    <th>Your Answer</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr th:each="question : ${sellingQuestions}">
-    <td th:text="${question.nowPrice}"></td>
-    <td th:text="${question.newsStatus}"></td>
-    <td th:text="${question.resistancePrice}"></td>
-    <td th:text="${question.bollingerBandsPosition}"></td>
-    <td th:text="${question.result}"></td>
-    <td><input type="text" th:name="'answer_'+${question.sellId}"></td>
-  </tr>
-  </tbody>
-</table>
+<form action="/submit-selling-answers" method="post">
+  <table>
+    <thead>
+    <tr>
+      <th>Question</th>
+      <th>Your Answer</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="question : ${sellingQuestions}">
+      <td class="question-cell">
+        <div class="attribute">
+          <span>Now Price:</span> <input type="text" placeholder="Now Price" th:name="'nowPrice_'+${question.sellId}">
+        </div>
+        <div class="attribute">
+          <span>News Status:</span> <input type="text" placeholder="News Status" th:name="'newsStatus_'+${question.sellId}">
+        </div>
+        <div class="attribute">
+          <span>Resistance Price:</span> <input type="text" placeholder="Resistance Price" th:name="'resistancePrice_'+${question.sellId}">
+        </div>
+        <div class="attribute">
+          <span>Bollinger Bands Position:</span> <input type="text" placeholder="Bollinger Bands Position" th:name="'bollingerBandsPosition_'+${question.sellId}">
+        </div>
+        <div class="attribute">
+          <span>Result:</span> <input type="text" placeholder="Result" th:name="'result_'+${question.sellId}">
+        </div>
+      </td>
+      <td>
+        <input type="datetime-local" th:name="'dateTime_'+${question.sellId}">
+        <button type="button" onclick="submitForm()">Submit</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</form>
 </body>
 </html>

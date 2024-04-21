@@ -9,18 +9,20 @@ import javax.persistence.Id;
 public class SellingQuestion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int sellId;
+    private int id;
     private float nowPrice;
     private String newsStatus;
     private float resistancePrice;
     private String bollingerBandsPosition;
     private String result;
 
+    private String dateTime;
+
     public SellingQuestion() {
     }
 
-    public SellingQuestion(int sellId, float nowPrice, String newsStatus, float resistancePrice, String bollingerBandsPosition, String result) {
-        this.sellId = sellId;
+    public SellingQuestion(int id, float nowPrice, String newsStatus, float resistancePrice, String bollingerBandsPosition, String result, String dateTime) {
+        this.id = id;
         this.nowPrice = nowPrice;
         this.newsStatus = newsStatus;
         this.resistancePrice = resistancePrice;
@@ -30,12 +32,12 @@ public class SellingQuestion {
 
     // Getters and setters
 
-    public int getSellId() {
-        return sellId;
+    public int getId() {
+        return id;
     }
 
-    public void setSellId(int sellId) {
-        this.sellId = sellId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public float getNowPrice() {
@@ -76,5 +78,13 @@ public class SellingQuestion {
 
     public void setResult(String result) {
         this.result = result;
+    }
+
+    public String getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(String dateTime) {
+        this.dateTime = dateTime;
     }
 }

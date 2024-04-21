@@ -1,6 +1,7 @@
 package haagahelia.zhenyu.DigitalCurrencyMaster;
 
-import haagahelia.zhenyu.DigitalCurrencyMaster.service.UserServiceImpl;
+
+import haagahelia.zhenyu.DigitalCurrencyMaster.service.UserDetailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -20,7 +21,7 @@ import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 @ComponentScan("fi.haagahelia.zhenyu.DigitalCurrencyMaster")
 public class WebSecurityConfig {
     @Autowired
-    private UserServiceImpl userService;
+    private UserDetailServiceImpl userDetailsService;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http, HandlerMappingIntrospector introspector)
@@ -39,7 +40,7 @@ public class WebSecurityConfig {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userService).passwordEncoder(new BCryptPasswordEncoder());
+        auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
     }
 
 }

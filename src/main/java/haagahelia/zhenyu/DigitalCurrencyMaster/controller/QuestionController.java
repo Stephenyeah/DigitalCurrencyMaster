@@ -5,6 +5,8 @@ import haagahelia.zhenyu.DigitalCurrencyMaster.model.BuyingQuestion;
 import haagahelia.zhenyu.DigitalCurrencyMaster.model.DataAnalysis;
 import haagahelia.zhenyu.DigitalCurrencyMaster.model.SellingQuestion;
 import haagahelia.zhenyu.DigitalCurrencyMaster.service.BuyingQuestionService;
+import haagahelia.zhenyu.DigitalCurrencyMaster.service.DataAnalysisService;
+import haagahelia.zhenyu.DigitalCurrencyMaster.service.SellingQuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +24,7 @@ public class QuestionController {
     private SellingQuestionService sellingQuestionService;
 
     @Autowired
-    private DataAnalysisService dataAnalysisService;s
+    private DataAnalysisService dataAnalysisService;
 
     @GetMapping("/buying-questions")
     public String getBuyingQuestions(Model model) {
