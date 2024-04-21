@@ -2,11 +2,14 @@ package haagahelia.zhenyu.DigitalCurrencyMaster.model.repository;
 
 
 import haagahelia.zhenyu.DigitalCurrencyMaster.model.SellingQuestion;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 
 @Repository
-public interface SellingQuestionRepository extends JpaRepository<SellingQuestion, Integer> {
+public interface SellingQuestionRepository extends CrudRepository<SellingQuestion, Long> {
     // Add custom methods if needed
+    List<SellingQuestion> findAll();
 }

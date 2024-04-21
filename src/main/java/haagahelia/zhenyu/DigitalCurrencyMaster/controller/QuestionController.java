@@ -1,49 +1,35 @@
 package haagahelia.zhenyu.DigitalCurrencyMaster.controller;
 
 
-import haagahelia.zhenyu.DigitalCurrencyMaster.model.BuyingQuestion;
-import haagahelia.zhenyu.DigitalCurrencyMaster.model.DataAnalysis;
-import haagahelia.zhenyu.DigitalCurrencyMaster.model.SellingQuestion;
-import haagahelia.zhenyu.DigitalCurrencyMaster.service.BuyingQuestionService;
-import haagahelia.zhenyu.DigitalCurrencyMaster.service.DataAnalysisService;
-import haagahelia.zhenyu.DigitalCurrencyMaster.service.SellingQuestionService;
+
+import haagahelia.zhenyu.DigitalCurrencyMaster.model.repository.DataAnalysisRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
 @Controller
 public class QuestionController {
 
-    @Autowired
-    private BuyingQuestionService buyingQuestionService;
 
     @Autowired
-    private SellingQuestionService sellingQuestionService;
+    private DataAnalysisRepository dataAnalysisRepository;
 
-    @Autowired
-    private DataAnalysisService dataAnalysisService;
-
-    @GetMapping("/buying-questions")
-    public String getBuyingQuestions(Model model) {
-        List<BuyingQuestion> buyingQuestions = buyingQuestionService.getAllBuyingQuestions();
-        model.addAttribute("buyingQuestions", buyingQuestions);
-        return "buying_questions";
+    @RequestMapping("/login")
+    public String login() {
+        return "login";
     }
 
-    @GetMapping("/selling-questions")
-    public String getSellingQuestions(Model model) {
-        List<SellingQuestion> sellingQuestions = sellingQuestionService.getAllSellingQuestions();
-        model.addAttribute("sellingQuestions", sellingQuestions);
-        return "selling_questions";
-    }
+//    @RequestMapping(value = { "/", "/DataAnalysis" })
+//    public String dataAnalysis(Model model) {
+//        model.addAttribute("buyingQuestion", dataAnalysisRepository.findAll());
+//        return "dataAnalysis";
+//    }
 
-    @GetMapping("/data-analysis")
-    public String getDataAnalysis(Model model) {
-        List<DataAnalysis> dataAnalysisList = dataAnalysisService.getAllDataAnalysis();
-        model.addAttribute("dataAnalysisList", dataAnalysisList);
-        return "data_analysis";
-    }
+
+
+
 }

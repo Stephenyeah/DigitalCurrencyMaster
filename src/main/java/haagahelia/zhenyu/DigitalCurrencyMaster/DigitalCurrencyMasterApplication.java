@@ -1,9 +1,8 @@
 package haagahelia.zhenyu.DigitalCurrencyMaster;
 
-import haagahelia.zhenyu.DigitalCurrencyMaster.model.BuyingQuestion;
-import haagahelia.zhenyu.DigitalCurrencyMaster.model.SellingQuestion;
-import haagahelia.zhenyu.DigitalCurrencyMaster.model.repository.BuyingQuestionRepository;
-import haagahelia.zhenyu.DigitalCurrencyMaster.model.repository.SellingQuestionRepository;
+
+import haagahelia.zhenyu.DigitalCurrencyMaster.model.User;
+import haagahelia.zhenyu.DigitalCurrencyMaster.model.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -11,6 +10,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+
+import java.util.Arrays;
 
 @SpringBootApplication
 @ComponentScan(basePackages = "haagahelia.zhenyu.DigitalCurrencyMaster")
@@ -23,32 +24,14 @@ public class DigitalCurrencyMasterApplication {
 	}
 
 	@Bean
-	public CommandLineRunner initData(BuyingQuestionRepository buyingQuestionRepository, SellingQuestionRepository sellingQuestionRepository) {
+	public CommandLineRunner initData(UserRepository urepository) {
 		return (args) -> {
-			// Check if initial data exists
-			if (buyingQuestionRepository.count() == 0 && sellingQuestionRepository.count() == 0) {
-				// Initialize sample buying questions
-				BuyingQuestion buyingQuestion1 = new BuyingQuestion(/* initialize properties */);
-				BuyingQuestion buyingQuestion2 = new BuyingQuestion(/* initialize properties */);
-
-				// Save sample buying questions to the repository
-				buyingQuestionRepository.save(buyingQuestion1);
-				buyingQuestionRepository.save(buyingQuestion2);
-
-				// Initialize sample selling questions
-				SellingQuestion sellingQuestion1 = new SellingQuestion(/* initialize properties */);
-				SellingQuestion sellingQuestion2 = new SellingQuestion(/* initialize properties */);
-
-				// Save sample selling questions to the repository
-				sellingQuestionRepository.save(sellingQuestion1);
-				sellingQuestionRepository.save(sellingQuestion2);
-
-				// Log initialization message
-				logger.info("Initialized sample buying and selling questions");
-			} else {
-				// Log message if initial data already exists
-				logger.info("Sample buying and selling questions already exist, skipping initialization");
+			if(urepository.count() == 0) {
+				User user1 = new User("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "arogon217@gmail.com", "USER");
+				User user2 = new User("admin", "$2a$08$bCCcGjB03eulCWt3CY0AZew2rVzXFyouUolL5dkL/pBgFkUH9O4J2","arogon21@gmail.com", "ADMIN");
+				urepository.saveAll(Arrays.asList(user1, user2));
 			}
+
 		};
 	}
 }

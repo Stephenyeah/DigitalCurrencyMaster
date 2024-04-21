@@ -11,8 +11,11 @@ import java.util.List;
 @Service
 public class BuyingQuestionServiceImpl implements BuyingQuestionService {
 
+    private final BuyingQuestionRepository buyingQuestionRepository;
     @Autowired
-    private BuyingQuestionRepository buyingQuestionRepository;
+    public BuyingQuestionServiceImpl(BuyingQuestionRepository buyingQuestionRepository) {
+        this.buyingQuestionRepository = buyingQuestionRepository;
+    };
 
     @Override
     public List<BuyingQuestion> getAllBuyingQuestions() {
