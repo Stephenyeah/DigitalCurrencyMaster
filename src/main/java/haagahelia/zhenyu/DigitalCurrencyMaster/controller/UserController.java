@@ -39,9 +39,17 @@ public class UserController {
                 User newUser = new User();
                 newUser.setPasswordHash(hashPwd);
                 newUser.setUsername(signupForm.getUsername());
+                newUser.setEmail(signupForm.getEmail());
                 newUser.setRole("USER");
                 if (repository.findByUsername(signupForm.getUsername()) == null) {
-                    repository.save(newUser);
+                    if (repository.findByEmail(signupForm.getEmail()) == null){
+                        repository.save(newUser);
+                    }
+                     else{
+                        bindingResult.rejectValue("email", "error.emailexists", "Email already exists");
+                        return "signup";
+                    }
+
                 }
                 else {
                     bindingResult.rejectValue("username", "error.userexists", "Username already exists");
