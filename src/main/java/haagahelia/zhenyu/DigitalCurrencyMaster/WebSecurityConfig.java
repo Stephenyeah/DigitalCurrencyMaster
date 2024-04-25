@@ -2,6 +2,7 @@ package haagahelia.zhenyu.DigitalCurrencyMaster;
 
 
 import haagahelia.zhenyu.DigitalCurrencyMaster.service.UserDetailServiceImpl;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -27,14 +28,13 @@ public class WebSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http, HandlerMappingIntrospector introspector)
             throws Exception {
         MvcRequestMatcher.Builder mvcMatcherBuilder = new MvcRequestMatcher.Builder(introspector);
-        return http
-                .authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
-                        .requestMatchers(mvcMatcherBuilder.pattern("/css/**"), mvcMatcherBuilder.pattern("/signup"),
+        return http.authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
+                        .requestMatchers(mvcMatcherBuilder.pattern("/css/**"), mvcMatcherBuilder.pattern("/signup"),mvcMatcherBuilder.pattern("/reset_password"),
                                 mvcMatcherBuilder.pattern("/saveuser"))
                         .permitAll()
                         .anyRequest().authenticated())
-                .formLogin(form -> form.loginPage("/login").defaultSuccessUrl("/booklist", true).permitAll())
-                .logout(logout -> logout.permitAll()).build();
+                .formLogin(form -> form.loginPage("/login").defaultSuccessUrl("/data_analysis", true).permitAll())
+                .logout(logout -> logout.permitAll()).sessionManagement(session -> session.maximumSessions(2).expiredUrl("/login")).build();
 
     }
 
@@ -42,5 +42,7 @@ public class WebSecurityConfig {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
     }
+
+
 
 }

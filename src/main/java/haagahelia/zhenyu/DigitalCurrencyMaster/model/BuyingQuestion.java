@@ -12,6 +12,8 @@ public class BuyingQuestion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    private String cyberName;
     private float nowPrice;
     private String newsStatus;
     private float supportPrice;
@@ -22,18 +24,23 @@ public class BuyingQuestion {
 
 
 
+
     // Getters and setters
 
     public BuyingQuestion() {
     }
 
-    public BuyingQuestion(long id, float nowPrice, String newsStatus, float supportPrice, int rsiData, String bollingerBandsPosition, String dateTime) {
+    public BuyingQuestion(long id,String cyberName, float nowPrice, String newsStatus, float supportPrice, int rsiData, String bollingerBandsPosition, String dateTime) {
         this.id = id;
+        this.cyberName = cyberName;
         this.nowPrice = nowPrice;
         this.newsStatus = newsStatus;
         this.supportPrice = supportPrice;
         this.rsiData = rsiData;
         this.bollingerBandsPosition = bollingerBandsPosition;
+        this.dateTime = dateTime;
+
+
     }
 
     public long getId() {
@@ -42,6 +49,14 @@ public class BuyingQuestion {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getCyberName() {
+        return cyberName;
+    }
+
+    public void setCyberName(String cyberName) {
+        this.cyberName = cyberName;
     }
 
     public float getNowPrice() {
@@ -91,4 +106,6 @@ public class BuyingQuestion {
     public void setDateTime(String dateTime) {
         this.dateTime = dateTime;
     }
+
+
 }

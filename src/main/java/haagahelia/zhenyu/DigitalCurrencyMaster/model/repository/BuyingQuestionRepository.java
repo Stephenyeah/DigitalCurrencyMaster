@@ -11,8 +11,7 @@ import java.util.List;
 @Repository
 public interface BuyingQuestionRepository extends CrudRepository<BuyingQuestion, Long> {
     // Add custom methods if needed
-    List<BuyingQuestion> findBydateTime(String dateTime);
-
+//    List<BuyingQuestion> findByUserId();
     List<BuyingQuestion> findAll();
 
 

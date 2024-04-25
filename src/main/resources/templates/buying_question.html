@@ -2,58 +2,48 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <title>Selling Questions</title>
+  <title>Buying Questions</title>
   <link rel="stylesheet" type="text/css" href="@{/css/questionlist.css}">
 </head>
 <body>
-<h2>Selling Questions</h2>
-<form action="#" th:object="${sellingquestions}" th:action="@{saveSell}" method="post">
-
-
-<!--  <label for="cyberName">cyberName</label>-->
-<!--  <select id="cyberName" th:field="*{cyberName}" class="form-control">-->
-<!--    <option th:each="question : ${buyingquestions}"-->
-<!--            th:value="${question.id}"-->
-<!--            th:text="${question.cyberName}"></option>-->
-<!--  </select>-->
+<h2>Buying Questions</h2>
+<form action="#" th:object="${buyingquestions}" th:action="@{saveBuy}" method="post">
 
   <label for="cyberName">cyberName</label>
   <input type="text" id="cyberName" th:field="*{cyberName}" />
   <div style="clear: both; display: block; height: 10px;"></div>
 
-
-  <label for="soldPrice">soldPrice</label>
-  <input type="text" id="soldPrice" th:field="*{soldPrice}" />
+  <label for="nowPrice">NowPrice</label>
+  <input type="text" id="nowPrice" th:field="*{nowPrice}" />
   <div style="clear: both; display: block; height: 10px;"></div>
 
   <label for="newsStatus">NewsStatus</label>
   <select id="newsStatus" th:field="*{newsStatus}" class="form-control">
-    <option value="Good">Good</option>
-    <option value="Intermediate">Intermediate</option>
-    <option value="Bad">Bad</option>
+        <option value="Good">Good</option>
+        <option value="Intermediate">Intermediate</option>
+        <option value="Bad">Bad</option>
   </select>
 
 
-  <label for="resistancePrice">resistancePrice</label>
-  <input type="text" id="resistancePrice" th:field="*{resistancePrice}" />
+  <label for="supportPrice">SupportPrice</label>
+  <input type="text" id="supportPrice" th:field="*{supportPrice}" />
   <div style="clear: both; display: block; height: 10px;"></div>
-
   <label for="rsiData">RsiData</label>
   <input type="text" id="rsiData" th:field="*{rsiData}" />
   <div style="clear: both; display: block; height: 10px;"></div>
-
-
-
-  <label for="result">Result</label>
-  <select id="result" th:field="*{result}" class="form-control">
-    <option value="win">Win</option>
-
-    <option value="lost">Lost</option>
-  </select>
+  <label for="bollingerBandsPosition">BollingerBandsPosition</label>
+  <select id="bollingerBandsPosition" th:field="*{bollingerBandsPosition}" />
+        <option value="Up">Up</option>
+        <option value="Middle">Middle</option>
+        <option value="Down">Down</option>
+  <div style="clear: both; display: block; height: 10px;"></div>
 
   <label for="dateTime">DateTime</label>
   <input type="datetime-local" id="dateTime" th:field="*{dateTime}" />
   <div style="clear: both; display: block; height: 10px;"></div>
+
+
+
 
 
   <input type="submit" value="Save"></input>

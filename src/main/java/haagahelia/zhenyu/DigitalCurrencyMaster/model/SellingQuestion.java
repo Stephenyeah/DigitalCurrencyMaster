@@ -12,24 +12,31 @@ public class SellingQuestion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private float nowPrice;
+
+    private String cyberName;
+    private float soldPrice;
     private String newsStatus;
     private float resistancePrice;
-    private String bollingerBandsPosition;
+    private String rsiData;
     private String result;
 
     private String dateTime;
 
+
+
     public SellingQuestion() {
     }
 
-    public SellingQuestion(int id, float nowPrice, String newsStatus, float resistancePrice, String bollingerBandsPosition, String result, String dateTime) {
+    public SellingQuestion(int id,String cyberName, float soldPrice, String newsStatus, float resistancePrice, String rsiData, String result, String dateTime) {
         this.id = id;
-        this.nowPrice = nowPrice;
+        this.cyberName = cyberName;
+        this.soldPrice = soldPrice;
         this.newsStatus = newsStatus;
         this.resistancePrice = resistancePrice;
-        this.bollingerBandsPosition = bollingerBandsPosition;
+        this.rsiData = rsiData;
         this.result = result;
+        this.dateTime = dateTime;
+
     }
 
     // Getters and setters
@@ -42,12 +49,20 @@ public class SellingQuestion {
         this.id = id;
     }
 
-    public float getNowPrice() {
-        return nowPrice;
+    public String getCyberName() {
+        return cyberName;
     }
 
-    public void setNowPrice(float nowPrice) {
-        this.nowPrice = nowPrice;
+    public void setCyberName(String cyberName) {
+        this.cyberName = cyberName;
+    }
+
+    public float getSoldPrice() {
+        return soldPrice;
+    }
+
+    public void setSoldPrice(float soldPrice) {
+        this.soldPrice = soldPrice;
     }
 
     public String getNewsStatus() {
@@ -66,12 +81,12 @@ public class SellingQuestion {
         this.resistancePrice = resistancePrice;
     }
 
-    public String getBollingerBandsPosition() {
-        return bollingerBandsPosition;
+    public String getRsiData() {
+        return rsiData;
     }
 
-    public void setBollingerBandsPosition(String bollingerBandsPosition) {
-        this.bollingerBandsPosition = bollingerBandsPosition;
+    public void setRsiData(String rsiData) {
+        this.rsiData = rsiData;
     }
 
     public String getResult() {
@@ -89,4 +104,6 @@ public class SellingQuestion {
     public void setDateTime(String dateTime) {
         this.dateTime = dateTime;
     }
+
+
 }

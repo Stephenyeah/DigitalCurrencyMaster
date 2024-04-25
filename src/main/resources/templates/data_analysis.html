@@ -1,26 +1,87 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Data Analysis</title>
+    <title>Digital Curruncy Analysis</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/dataanalysis.css}" />
 </head>
+
 <body>
-<h2>Data Analysis</h2>
-<table>
-    <thead>
-    <tr>
-        <th>Buying Question</th>
-        <th>Selling Question</th>
-        <th>Win Status</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="analysis : ${dataAnalysisList}">
-        <td th:text="${analysis.buyingQuestion.nowPrice}"></td>
-        <td th:text="${analysis.sellingQuestion.nowPrice}"></td>
-        <td th:text="${analysis.winStatus}"></td>
-    </tr>
-    </tbody>
-</table>
+<div class="container">
+    <div class="col-md-4">
+        <h1>Digital Curruncy Analysis</h1>
+    </div>
+    <div class="col-md-4" style="padding:20px 0">
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out" class="btn btn-danger"/>
+        </form>
+    </div>
+
+    <div>
+        <h2>BuyingOrders</h2>
+    </div>
+    <table class="table table-striped">
+        <tr>
+            <th>Digital Currency</th>
+            <th>Now Price</th>
+            <th>News Status</th>
+            <th>Support Price</th>
+            <th>Rsi Data</th>
+            <th>BollingerBands Position</th>
+            <th>Date Time</th>
+            <th>Action</th>
+
+
+        </tr>
+        <tr th:each = "question : ${buyingquestions} ">
+            <td th:text="${question.cyberName}"></td>
+            <td th:text="${question.nowPrice}"></td>
+            <td th:text="${question.newsStatus}"></td>
+            <td th:text="${question.supportPrice}"></td>
+            <td th:text="${question.rsiData}"></td>
+            <td th:text="${question.bollingerBandsPosition}"></td>
+            <td th:text="${question.dateTime}"></td>
+            <td> <a sec:authorize="hasRole('USER')" th:href="@{/deleteBuy/{id}(id=${question.id})}" class="btn btn-danger btn-sm">Delete</a></td>
+
+
+        </tr>
+    </table>
+
+    <div>
+        <h2>SellingOrders</h2>
+    </div>
+
+    <table class="table table-striped">
+        <tr>
+            <th>Digital Currency</th>
+            <th>Sold Price</th>
+            <th>News Status</th>
+            <th>Support Price</th>
+            <th>Rsi Data</th>
+            <th>BollingerBands Position</th>
+            <th>Date Time</th>
+            <th>Action</th>
+
+
+        </tr>
+        <tr th:each = "question : ${sellingquestions} ">
+            <td th:text="${question.cyberName}"></td>
+            <td th:text="${question.soldPrice}"></td>
+            <td th:text="${question.newsStatus}"></td>
+            <td th:text="${question.resistancePrice}"></td>
+            <td th:text="${question.rsiData}"></td>
+            <td th:text="${question.result}"></td>
+            <td th:text="${question.dateTime}"></td>
+            <td> <a sec:authorize="hasRole('USER')" th:href="@{/deleteSell/{id}(id=${question.id})}" class="btn btn-danger btn-sm">Delete</a></td>
+
+
+        </tr>
+    </table>
+    <a href="/buying_question"><button class="btn btn-success">Buy order</button></a>
+    <a href="/selling_question"><button class="btn btn-success">Sell order</button></a>
+
+
+</div>
 </body>
 </html>

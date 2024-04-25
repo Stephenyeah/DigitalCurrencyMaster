@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Login</title>
-  <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Digital Curruncy Master login</title>
+  <link  rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
 </head>
 <body>
-<h2>Login</h2>
-<form th:action="@{/login}" method="post">
-  <label>Email:</label><br>
-  <input type="text" name="email"><br>
-  <label>Password:</label><br>
-  <input type="password" name="password"><br><br>
-  <button type="submit">Login</button>
-</form>
-<p>Don't have an account? <a th:href="@{/register}">Register</a></p>
+<div class="container">
+  <div class="alert alert-danger" th:if="${param.error}">
+    Invalid username and password.
+  </div>
+  <div class="alert alert-warning" th:if="${param.logout}">
+    You have been logged out.
+  </div>
+  <form th:action="@{/login}" method="post" >
+    <div><label> User Name : <input type="text" name="username" class="form-control"/> </label></div>
+    <div><label> Password: <input type="password" name="password" class="form-control"/> </label></div>
+    <div><input type="submit" value="Log In" class="btn btn-primary"/></div>
+  </form>
+  <p>Don't have an account? <a th:href="@{/signup}">Register</a></p>
+  <p>Foget your password? <a th:href="@{/reset_password}">Forget password</a></p>
+</div>
 </body>
 </html>
